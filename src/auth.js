@@ -2,13 +2,14 @@
 var Agent = require('socks5-https-client/lib/Agent');
 
 function getRequestDefaultOptions() {
-    const socksHost = process.env.PROXY_HOST;
-    const socksPort = process.env.PROXY_PORT;
+    const { PROXY_HOST, PROXY_PORT, PROXY_USER, PROXY_PASS } = process.env;
     const proxyAgentOptions = {
         agentClass: Agent,
         agentOptions: {
-            socksHost,
-            socksPort,
+            socksHost: PROXY_HOST,
+            socksPort: PROXY_PORT,
+            socksUsername: PROXY_USER,
+            socksPassword: PROXY_PASS,
         },
         rejectUnauthorized: false
     }
