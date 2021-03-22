@@ -24,7 +24,7 @@ function getRequestDefaultOptions() {
         followRedirect: false,
 //    ,proxy: "http://127.0.0.1:8888" // Note the fully-qualified path to Fiddler proxy. No "https" is required, even for https connections to outside.
     }
-    return  socksHost ? { ...defaultHeaders, ...proxyAgentOptions } : defaultHeaders
+    return  PROXY_HOST ? { ...defaultHeaders, ...proxyAgentOptions } : defaultHeaders
 }
 
 var request = require('request').defaults(getRequestDefaultOptions());
